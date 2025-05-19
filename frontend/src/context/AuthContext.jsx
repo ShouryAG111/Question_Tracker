@@ -12,7 +12,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const storedToken = localStorage.getItem('token');
     const storedUserId = localStorage.getItem('userId');
-    if (storedToken && storedUserId) {
+    if (storedToken && storedUserId){
       setToken(storedToken);
       setUserId(storedUserId);
       setIsAuthenticated(true);
@@ -27,7 +27,7 @@ export const AuthProvider = ({ children }) => {
     setIsAuthenticated(true);
   };
 
-  const logout = () => {
+  const logout = ()=>{
     localStorage.removeItem('token');
     localStorage.removeItem('userId');
     setToken(null);

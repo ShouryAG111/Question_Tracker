@@ -26,16 +26,16 @@ const Dashboard = () => {
 
   const fetchQuestions = async () => {
     try {
-      const response = await axios.get('https://question-csgs.onrender.com/api/questions', {
+      const response = await axios.get('https://question-csgs.onrender.com/api/questions',{
         headers: { Authorization: `Bearer ${token}` },
-      });
+      }); 
       setQuestions(response.data);
     } catch (error) {
       toast.error('Error fetching questions');
     }
   };
 
-  const fetchUsername = async () => {
+  const fetchUsername = async () =>{
     try {
       const response = await axios.get('https://question-csgs.onrender.com/api/questions/user', {
         headers: { Authorization: `Bearer ${token}` },
@@ -43,9 +43,9 @@ const Dashboard = () => {
       setUsername(response.data.username);
     } catch (error) {
       toast.error('Error fetching user profile');
-    }
+    }                             
   };
-
+                                    
   useEffect(() => {
     if (isAuthenticated) {
       fetchQuestions();
@@ -57,13 +57,14 @@ const Dashboard = () => {
     if (!query.trim()) {
       setSearchResults(null);
       return;
-    }
+    }                             
     try {
       const response = await axios.get(`https://question-csgs.onrender.com/api/questions/search?query=${query}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setSearchResults(response.data);
-    } catch (error) {
+    } 
+    catch (error){       
       toast.error('Error searching questions');
     }
   };
@@ -95,7 +96,7 @@ const Dashboard = () => {
         params: { minRating: ratingFilter },
       });
       setSearchResults(response.data);
-    } catch (error) {
+    } catch (error){
       toast.error('Error filtering by rating');
     }
   };
@@ -111,7 +112,8 @@ const Dashboard = () => {
         params: { topics: topicFilter },
       });
       setSearchResults(response.data);
-    } catch (error) {
+    } 
+    catch (error){     
       toast.error('Error filtering by topic');
     }
   };
@@ -163,7 +165,7 @@ const Dashboard = () => {
               >
                 Logout
               </button>
-            </div>
+            </div>                             
           </div>
         </div>
       </nav>
@@ -278,7 +280,7 @@ const Dashboard = () => {
                 <button
                   onClick={handleTimeFilter}
                   className="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700"
-                >
+                >  
                   Apply
                 </button>
               </div>

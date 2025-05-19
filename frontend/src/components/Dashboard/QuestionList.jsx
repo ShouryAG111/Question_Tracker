@@ -5,19 +5,19 @@ import toast from 'react-hot-toast';
 function QuestionList({ questions, onQuestionUpdated }) {
   const { token } = useAuth();
 
-  const handleRevisionToggle = async (questionId, currentStatus) => {
+  const handleRevisionToggle = async(questionId, currentStatus) => {
     try {
       await axios.patch(
         `https://question-csgs.onrender.com/api/questions/${questionId}`,
         { needsRevision: !currentStatus },
         { headers: { Authorization: `Bearer ${token}` } }
-      );
+      );                           
       onQuestionUpdated();
     } catch (error) {
       toast.error('Error updating question');
     }
   };
-
+  
 const handleNotesUpdate = async (questionId, notes) => {
     try {
       await axios.patch(
@@ -35,10 +35,10 @@ const handleNotesUpdate = async (questionId, notes) => {
     try {
       await axios.delete(`https://question-csgs.onrender.com/api/questions/${questionId}`, {
         headers: { Authorization: `Bearer ${token}` },
-      });
+      }); 
       onQuestionUpdated();
       toast.success('Question deleted successfully');
-    } catch (error) {
+    } catch (error) {                                                            
       toast.error('Error deleting question');
     }
   };
